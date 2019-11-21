@@ -1,6 +1,6 @@
 # DSCI532_GROUP104_Movies
 
-Team members:
+Team Members:
 
 Fanli Zhou
 
