@@ -4,13 +4,13 @@ Investing in the movie business is like gambling: it may sound glamorous but can
 
 ### 2. Description of the data
 
-The dataset we are visualizing comes from the [Vega dataset on Movies]( https://raw.githubusercontent.com/vega/vega-datasets/master/data/movies.json). The data was compiled by Vega to create a repository for example data to be used in their other packages as stated on their [Vega Sources page]( https://github.com/vega/vega-datasets/blob/master/sources.md).
+The dataset we are visualizing comes from the [Vega dataset on Movies](https://raw.githubusercontent.com/vega/vega-datasets/master/data/movies.json). The data was compiled by Vega to create a repository for example data to be used in their other packages as stated on their [Vega Sources page](https://github.com/vega/vega-datasets/blob/master/sources.md).
 
 This dataset contains 3,200 movies with 16 variables for each movie. Due to the time restriction of this project, we will only be visualizing six variables.
 
 Four of the variables we will be analysing describe the movie attributes including the title of the movie (`Title`), the director of the movie (`Director`), which genre the movie belongs to (`Major_Genre`), and the year when the movie was originally released (`Release_Date`). 
 
-The other two variables describe the outcomes of the movie through ratings (`IMDB_Ratings`) or overall profit (`Worldwide_Profit`). The dataset contains ratings from different sources, but we chose to visualize `IMDB_Rating` as it has 600 more values in the dataset then Rotten Tomatoes and relies on audience reviews. We will create the additional variable `Worldwide_Profit` to summarize the profit for each movie calculated by taking the difference of the variables `Worldwide_Gross` (overall gross income) and `Production_Budget` (amount spent on making the movie) to get the movie’s profit. 
+The other two variables describe the outcomes of the movie through ratings (`IMDB_Ratings`) or overall profit (`Worldwide_Profit`). The dataset contains ratings from different sources, but we chose to visualize `IMDB_Rating` as it has 600 more values in the dataset than Rotten Tomatoes and relies on audience reviews. We will create the additional variable `Worldwide_Profit` to summarize the profit for each movie calculated by taking the difference of the variables `Worldwide_Gross` (overall gross income) and `Production_Budget` (amount spent on making the movie) to get the movie's profit. 
 
 ### 3. Research questions and Usage Scenarios
 
