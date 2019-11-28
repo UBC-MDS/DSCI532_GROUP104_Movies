@@ -15,9 +15,7 @@ movie_df = pd.read_csv('https://raw.githubusercontent.com/UBC-MDS/DSCI532_GROUP1
 genres = movie_df.Major_Genre.unique()
 directors = movie_df.Director.unique()
 
-
-
-def make_plot_1(genre="Action", director="James Cameron"):
+def make_plot(genre="Action", director=["James Cameron", "Michael Bay"]):
 
     def get_top_director(genre_1="Action"):
         """
@@ -37,50 +35,6 @@ def make_plot_1(genre="Action", director="James Cameron"):
         """
         Finds movie information from the most productive directors in the selected genre
         """
-        top_director = get_top_director(genre)
-        top_director['Major_Genre'] = chosen_genre
-        return pd.merge(movie_df, 
-                    top_director, 
-                    how = "inner", 
-                    on = ['Major_Genre', 'Director'])
-    
-    df_genre = get_top_df(genre)
-    df_director = df_genre[(df_genre['Director'] == director)]
-
-    # Create a plot of the Displacement and the Horsepower of the cars dataset
-    
-    
-    chart = alt.Chart(df_director).mark_circle().encode(
-                alt.X("Year:O"),
-                alt.Y("IMDB_Rating:Q", axis=alt.Axis(title="Mark"), scale=alt.Scale(zero=False)),
-                tooltip = ['Title', 'Major_Genre', 'Director', 'IMDB_Rating']
-            ).properties(title='Rating',
-                        width=500, height=350).interactive()
-
-    return chart
-
-def make_plot_2(genre="Action", director="James Cameron"):
-
-    def get_top_director(genre_1="Action"):
-        """
-        Finds the number of movies of the most productive directors in the selected genre
-        """
-
-        mdfg = movie_df.groupby('Major_Genre')
-        return (mdfg.get_group(genre_1)
-                .groupby('Director')
-                .count()
-                .sort_values(by = 'Title', ascending = False)
-                .head(30)
-                .reset_index()
-                .iloc[:, :2]
-                .rename(columns = {'Title': 'Count'}))
-
-    def get_top_df(chosen_genre="Action"):
-        """
-        Finds movie information from the most productive directors in the selected genre
-        """
-  
         top_director = get_top_director(genre)
         top_director['Major_Genre'] = chosen_genre
         return pd.merge(movie_df, 
@@ -90,43 +44,40 @@ def make_plot_2(genre="Action", director="James Cameron"):
     
     df_genre = get_top_df(genre)
     df_genre['profit'] = (df_genre['Worldwide_Gross'] - df_genre['Production_Budget'])/1000000
-    df_director = df_genre[(df_genre['Director'] == director)]
+    df_director = df_genre[df_genre.Director.isin(director)]
+    
+    #df_director = df_genre[(df_genre['Director'] == director)]
 
     # Create a plot of the Displacement and the Horsepower of the cars dataset
     
-    
-    chart = alt.Chart(df_director).mark_circle().encode(
+    brush = alt.selection(type='single', resolve='global')
+    #selection = alt.selection_single();
+    base = alt.Chart(df_director).mark_circle(size=80).add_selection(brush
+    ).encode(
                 alt.X("Year:O"),
-                alt.Y("profit:Q", scale=alt.Scale(zero=False), axis=alt.Axis(title="Profit (M USD)")),
-                tooltip = ['Title', 'Major_Genre', 'Director', 'IMDB_Rating']
-            ).properties(title='Profit',
-                        width=500, height=350).interactive()
+                color=alt.condition(brush, "Director:N", alt.value('grey')),
+                opacity=alt.condition(brush, alt.value(0.8), alt.value(0.1))
+            ).properties(width=400, height=250).interactive()
 
-    return chart
+    plot = (base.encode(alt.Y("IMDB_Rating:Q", axis=alt.Axis(title="Mark"), scale=alt.Scale(zero=False)),
+                       tooltip = ['Title', 'Major_Genre', 'Director', 'IMDB_Rating']).properties(title='Rating') & base.encode(alt.Y("profit:Q", axis=alt.Axis(title="Profit (M USD)"), scale=alt.Scale(zero=False)),
+                       tooltip = ['Title', 'Major_Genre', 'Director', 'profit']).properties(title='Profit'))
+    
+    return plot
+
 
 app.layout = html.Div([
     html.Iframe(
         sandbox='allow-scripts',
         id='plot1',
-        height='470',
-        width='655',
+        height='650',
+        width='550',
         style={'border-width': '0'},
         ################ The magic happens here
-        srcDoc=make_plot_1().to_html()
+        srcDoc=make_plot().to_html()
         ################ The magic happens here
-        ),
-        ############### Plot 2 ###########
-        html.Iframe(
-        sandbox='allow-scripts',
-        id='plot2',
-        height='470',
-        width='655',
-        style={'border-width': '0'},
-        ################ The magic happens here
-        srcDoc=make_plot_2().to_html()
-        ################ The magic happens here       
-    ),
-
+        ), 
+    
     html.Div([
 
         html.Div([
@@ -134,7 +85,7 @@ app.layout = html.Div([
         id='genre',
         options=[{'label': i, 'value': i} for i in genres],
         value='Action',
-        style=dict(width='45%', verticalAlign="middle"),
+        style=dict(width='50%', verticalAlign="middle"),
         multi=False,
         searchable=True
         ),
@@ -144,10 +95,10 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='director',
                 options=[{'label': i, 'value': i} for i in directors],
-                value='James Cameron',
-                style=dict(width='45%',
+                value=['James Cameron', 'Michael Bay'],
+                style=dict(width='50%',
                     verticalAlign="middle"),
-                multi=False,
+                multi=True,
                 searchable=True
         ),
         ])
@@ -167,21 +118,8 @@ def update_plot(genre_value,
     """
     Takes in the genre and director and calls make_plot to update the plot
     """
-    updated_chart = make_plot_1(genre_value, director_value).to_html()
+    updated_chart = make_plot(genre_value, director_value).to_html()
     return updated_chart
-
-
-@app.callback(
-    dash.dependencies.Output('plot2', 'srcDoc'),
-    [dash.dependencies.Input('genre', 'value'),
-    dash.dependencies.Input('director', 'value')])
-def update_plot_2(genre_value,
-                director_value):
-    """
-    Takes in the genre and director and calls make_plot to update the plot
-    """
-    updated_chart_2 = make_plot_2(genre_value, director_value).to_html()
-    return updated_chart_2
 
 
 
