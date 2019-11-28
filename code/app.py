@@ -102,16 +102,16 @@ def make_plot(genre = 'Action'):
         top_director = (mdfg.get_group(genre)
                         .groupby('Director')
                         .count()
-                        .sort_values(by = 'Title', ascending = False)
+                        .sort_values(by='Title', ascending = False)
                         .head(num)
                         .reset_index()
                         .iloc[:, :2]
-                        .rename(columns = {'Title': 'Count'}))    
+                        .rename(columns={'Title': 'Count'}))    
         top_director['Major_Genre'] = genre
-        top_df = pd.merge(selected_df, 
-                        top_director, 
-                        how = "inner", 
-                        on = ['Major_Genre', 'Director'])
+        top_df = pd.merge(df, 
+                          top_director, 
+                          how="inner",
+                          on=['Major_Genre', 'Director'])
         return (top_director, top_df)
 
    
@@ -135,9 +135,9 @@ def make_plot(genre = 'Action'):
                                       alt.value(0.75), 
                                       alt.value(0.05)),
               ).properties(
-                title = 'Top 30 productive directors in ' + genre,
-                width = 300, 
-                height = 750
+                title='Top 30 productive directors in ' + genre,
+                width=200, 
+                height=650
               ).add_selection(brush)
     
     chart_2 = alt.Chart(top_df).mark_circle().encode(
@@ -151,22 +151,22 @@ def make_plot(genre = 'Action'):
                 tooltip = ['Title', 'Major_Genre', 'Director', 'IMDB_Rating']
               ).properties(
                 title='IMDB Rating',
-                width=500, height=250
+                width=400, height=250
               ).interactive()
     
     chart_3 = alt.Chart(top_df).mark_circle().encode(
                 alt.X("Year:O",
                       axis=alt.Axis(title="Year")),
-                alt.Y("Profit:Q", 
-                      axis=alt.Axis(title="Profit (USD)"), 
+                alt.Y("Profit_Million:Q", 
+                      axis=alt.Axis(title="Profit (million USD)"), 
                       scale=alt.Scale(zero=False)),
                 alt.Color('Director:N'),
                 opacity=alt.condition(brush, alt.value(0.75), alt.value(0.05)),
                 tooltip = ['Title', 'Major_Genre', 'Director', 'IMDB_Rating']
             ).properties(title='Worldwide Profit',
-                        width=500, height=250).interactive()
+                        width=400, height=250).interactive()
     
-    return chart_1 | alt.vconcat(chart_2 & chart_3)
+    return chart_1 | (chart_2 & chart_3)
 
 
 app.layout = html.Div([
