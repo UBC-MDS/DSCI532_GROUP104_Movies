@@ -1,10 +1,25 @@
 ### Reflections on the Altair Dashboard
+This is our reflections document. Please add any thoughts as you have them. We will combine the thoughts on Saturday. 
+
 "In this section, you should (as a group) critique your dashboard and point out what it does well, what its limitations are, and what are good future improvements and additions. In this section, you should also clearly document how you addressed the feedback (GitHub issues) you received from your peers and the TAs. Point form is fine, but they need to be full sentences. This section should not be more than 500 words."
 
-Our dashboard 
+#### Sarah
+- point 1
+- point 2
+- point 3
+- point 4
+- point 5
 
-Our dashboard does well in letting the users interact with the various directors for a given genre. We kept the dashboard simple to make it more effective in looking at the plots and filters available while still answering our research questions. We didn't want to overwhelm the user with a lot of features and charts. The interactivity between the most productive directors chart and the other charts, gives the user the flexibility to choose the directors that are of interest to them to produce their next movie. Our app allows multiple selection which allows the comparison of as many directors as the user wants. 
+#### Wenjiao
+- point 1
+- point 2
+- point 3
+- point 4
+- point 5
 
-We took Ellen's feedback to not include the movie list as it would've been a lot of movies and text plotted. We instead re-arranged our prototype to focus on the charts that better conveyed and answered our research questions. We also made sure to include our progress and roles in GitHub issues.
-
-There are quite features we wish we could have added or refined if we had more time. We made the most productive directors chart interactive to filter our rating and profit charts. However, since the rating and profit charts rely on the selection of the most productive directors chart we wanted to be able to pre-select 1-2 directors when the dashboard loaded. Unfortunately, we cannot pre-select director which leads to an overplotted ratings and profit line chart upon loading the dashboard. These initial charts of many coloured lines are not effective visualizations. Another feature, we would change is to filter the colour legend based on the directors selected instead of always having the 30 reflecting the most productive directors. Both these features we tried to do, but in the timeframe given, we were not able to implement them. We have been in touch with Jake from Altair to discuss implementation to achieve our goals with these two features. 
+#### Fanli
+- point 1
+- point 2
+- point 3
+- point 4
+- point 5
