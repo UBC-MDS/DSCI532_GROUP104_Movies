@@ -11,7 +11,7 @@ Users can first choose a genre to explore in the `Genres` dropdown menu. Then us
 
 ### App Sketch  
 
-![](./img/sketch/sketch_of_proposal.PNG)
+![](./img/sketch/app_sketch.PNG)
 
 ### Contribution
 We welcome all feedback and contributions. If you are interested in contributing to our app, please read our [contributing document](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/blob/master/CONTRIBUTING.md) and our [code of conduct](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/blob/master/CODE_OF_CONDUCT.md). Our [license](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/blob/master/LICENSE) outlines our permissions and copyright information for users.
