@@ -3,7 +3,6 @@ import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import pandas as pd
-import sqlalchemy
 import altair as alt
 import vega_datasets
 
@@ -17,7 +16,7 @@ server = app.server
 app.title = 'Dash app with pure Altair HTML'
 
 movie_df = pd.read_csv(
-    'https://raw.githubusercontent.com/UBC-MDS/DSCI532_GROUP104_Movies/master/data/clean/movies_clean_df.csv', index_col=0)
+    'data/clean/movies_clean_df.csv', index_col=0)
 genres = movie_df.Major_Genre.unique()
 directors = movie_df.Director.unique()
 
