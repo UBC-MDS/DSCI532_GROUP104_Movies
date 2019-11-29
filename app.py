@@ -137,7 +137,7 @@ def make_plot(genre='Action'):
         title='IMDB Rating',
         width=400,
         height=280
-    ).interactive()
+    ).interactive().transform_filter(brush)
 
     chart_3 = alt.Chart(top_df).mark_line(point=True).encode(
         alt.X("Year:O",
@@ -152,7 +152,7 @@ def make_plot(genre='Action'):
         title='Worldwide Profit',
         width=400,
         height=280
-    ).interactive()
+    ).interactive().transform_filter(brush)
 
     return chart_1 | (chart_2 & chart_3)
 
