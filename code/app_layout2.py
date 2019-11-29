@@ -15,21 +15,8 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 app.title = 'Dash app with pure Altair HTML'
 
-movie_df = pd.read_json('https://raw.githubusercontent.com/vega/vega-datasets/master/data/movies.json')
-
-# Add a column of the release year
-movie_df['Year'] = pd.to_datetime(movie_df['Release_Date']).dt.year
-# A list columns that will appear in the final data frame
-movie_df['Profit_Million'] = (movie_df['Worldwide_Gross'] - movie_df['Production_Budget'])/1000_000
-column_list = ['Title', 'Major_Genre', 'Director', 'Year', 'Profit_Million', 'IMDB_Rating', 'MPAA_Rating']
-
-# Filter out lines with errors or NaNs in 'Director', 'Year', 'Major_Genre' columns
-movie_df = (movie_df.query('Year < 2019')
-                     .dropna(subset = column_list)
-                     .loc[:, column_list]
-                     .reset_index()
-                     .drop(columns = ['index']))
-
+movie_df = pd.read_csv(
+    'data/clean/movies_clean_df.csv', index_col=0)
 genres = movie_df.Major_Genre.unique()
 directors = movie_df.Director.unique()
 
@@ -150,7 +137,7 @@ def make_plot(genre='Action'):
         title='IMDB Rating',
         width=400,
         height=280
-    ).interactive().transform_filter(brush)
+    ).interactive()
 
     chart_3 = alt.Chart(top_df).mark_line(point=True).encode(
         alt.X("Year:O",
@@ -165,7 +152,7 @@ def make_plot(genre='Action'):
         title='Worldwide Profit',
         width=400,
         height=280
-    ).interactive().transform_filter(brush)
+    ).interactive()
 
     return chart_1 | (chart_2 & chart_3)
 
