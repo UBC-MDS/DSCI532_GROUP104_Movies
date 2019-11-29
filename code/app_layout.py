@@ -8,8 +8,7 @@ import vega_datasets
 ### NEW IMPORT
 # See Docs here: https://dash-bootstrap-components.opensource.faculty.ai
 import dash_bootstrap_components as dbc
-
-app = dash.Dash(__name__, assets_folder='assets', external_stylesheets=[dbc.themes.CERULEAN])
+app = dash.Dash(__name__, assets_folder='assets', external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.config['suppress_callback_exceptions'] = True
 
 server = app.server
@@ -112,16 +111,20 @@ jumbotron = dbc.Jumbotron(
         dbc.Container(
             [
                 html.H1("Directors Production Tracker App"),
-                html.P(
-                    "Welcome to the Directors Production Tracker App. This app is for you to explore different directors based on the number of movies they produce in a genre to find your director for your next movie.",
-                    className="lead"
-                ),
             ],
             fluid=True,
         )
     ],
     fluid=True,
 )
+
+content1 = dbc.Container([
+    dbc.Row([
+                html.P(
+                    "Welcome to the Directors Production Tracker App. This app is for you to explore different directors based on the number of movies they produce in a genre to find your director for your next movie.",
+                    className="lead")
+    ])
+])
 content1 = dbc.Container([
     dbc.Row([
         html.H3("Filter by Genre: "),
