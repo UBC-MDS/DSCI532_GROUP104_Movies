@@ -104,10 +104,11 @@ def make_plot(genre='Action'):
                           on=['Major_Genre', 'Director'])
         return (top_director, top_df)
 
-    brush = alt.selection(type='multi', encodings=['y'])
-
     # get information from the 30 most productive directors in the selected genre
     top_director, top_df = get_top_df(genre)
+
+    brush = alt.selection(type='multi', fields=['Director'], init={
+                          'Director': top_director.iloc[0, 0]})
 
     chart_1 = alt.Chart(top_director).mark_bar().encode(
         alt.Y('Director:N',
@@ -207,48 +208,46 @@ jumbotron = dbc.Jumbotron([
 )
 
 content1 = dbc.Container([
-    dbc.Row([
-        html.Div(
-            html.P('Select a genre'),
-            style={
-                'height': '30px',
-                'width': 'fit-content',
-                'float': 'left',
-                'margin-left': '30px',
-                'margin-right': '10px',
-                'color': '#0f3c63',
-                'font-family': 'sans-serif',
-            }
+    html.Div(
+        html.P('Select a genre'),
+        style={
+            'height': '30px',
+            'width': 'fit-content',
+            'float': 'left',
+            'margin-left': '30px',
+            'margin-right': '10px',
+            'color': '#0f3c63',
+            'font-family': 'sans-serif',
+        }
+    ),
+    html.Div(
+        dcc.Dropdown(
+            id='genre',
+            options=[{'label': i, 'value': i} for i in genres],
+            value='Action',
+            style=dict(width='100%', verticalAlign="middle"),
+            multi=False,
+            searchable=True
         ),
-        html.Div(
-            dcc.Dropdown(
-                id='genre',
-                options=[{'label': i, 'value': i} for i in genres],
-                value='Action',
-                style=dict(width='100%', verticalAlign="middle"),
-                multi=False,
-                searchable=True
-            ),
-            style={
-                'height': '30px',
-                'width': '160px',
-                'float': 'left',
-            }
-        ),
-        html.Div(
-            html.P(
-                'and click on the bar chart to choose a director to explore. Press "shift" for multiple selections.'),
-            style={
-                'height': '30px',
-                'float': 'left',
-                'width': 'fit-content',
-                'margin-left': '30px',
-                'color': '#0f3c63',
-                'font-family': 'sans-serif',
-                # 'border': '1px solid blue'
-            }
-        ),
-    ])
+        style={
+            'height': '30px',
+            'width': '160px',
+            'float': 'left',
+        }
+    ),
+    html.Div(
+        html.P(
+            'and click on the bar chart to choose a director to explore. Press "shift" for multiple selections.'),
+        style={
+            'height': '30px',
+            'float': 'left',
+            'width': 'fit-content',
+            'margin-left': '30px',
+            'color': '#0f3c63',
+            'font-family': 'sans-serif',
+            # 'border': '1px solid blue'
+        }
+    )
 
 ])
 
