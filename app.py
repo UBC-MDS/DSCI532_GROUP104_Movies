@@ -16,7 +16,7 @@ server = app.server
 app.title = 'Dash app with pure Altair HTML'
 
 movie_df = pd.read_csv(
-    'https://github.com/flizhou/DSCI532_GROUP104_Movies/tree/master/data/clean', index_col=0)
+    'data/clean/movies_clean_df.csv', index_col=0)
 genres = movie_df.Major_Genre.unique()
 directors = movie_df.Director.unique()
 
