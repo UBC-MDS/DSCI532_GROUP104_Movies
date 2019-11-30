@@ -5,4 +5,3 @@ altair==3.3.0
 vega_datasets==0.7.0
 gunicorn==20.0.0
 dash-bootstrap-components==0.7.2
-vega-lite==4.0.0
