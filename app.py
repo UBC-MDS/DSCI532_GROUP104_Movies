@@ -15,6 +15,7 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 app.title = 'Dash app with pure Altair HTML'
 
+
 movie_df = pd.read_csv(
     'data/clean/movies_clean_df.csv', index_col=0)
 genres = movie_df.Major_Genre.unique()
@@ -238,6 +239,19 @@ content1 = dbc.Container([
     html.Div(
         html.P(
             'and click on the bar chart to choose a director to explore. Press "shift" for multiple selections.'),
+        style={
+            'height': '30px',
+            'float': 'left',
+            'width': 'fit-content',
+            'margin-left': '30px',
+            'color': '#0f3c63',
+            'font-family': 'sans-serif',
+            # 'border': '1px solid blue'
+        }
+    ),
+    html.Div(
+        html.P(
+            'Hover over a point in the "IMDB Rating" and "Worldwide Profit" plots to see the attributes of the movie.'),
         style={
             'height': '30px',
             'float': 'left',
