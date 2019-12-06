@@ -18,9 +18,9 @@ Our peers found our app easy to use following the app instruction. They were abl
 
 - Point out the interactive feature between graphs in the instruction so that users know how to interact with the graphs.
 
-3. Change the initial state for the rating and profit plots so that not all directors show.
+- Change the initial state for the rating and profit plots so that not all directors show.
 
-4. Change the bar chart title when there are fewer than 30 directors in a selected genre.
+- Change the bar chart title when there are fewer than 30 directors in a selected genre.
 
 After reviewing the feedback, we decided to make the following changes:
 
