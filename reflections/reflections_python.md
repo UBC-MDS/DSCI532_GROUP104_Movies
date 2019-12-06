@@ -12,31 +12,45 @@ There are quite features we wish we could have added or refined if we had more t
 
 #### Feedback and Reflection
 
-Our peers found our app easy to use following the app instruction. They were able to choose multiple directors to explore their statistics as we expected. We got some suggestions and concluded here:
+Our peers found our app easy to use following the instructions on our app. They were able to choose multiple directors to explore their statistics as we expected. We compiled our suggestion below:
    
-- Separate the app instruction from the plot label so that the instruction stands out.
+- Separate the instructions from the plot title, so that the instructions stand out.
 
-- Point out the interactive feature between graphs in the instruction so that users know how to interact with the graphs.
+- Describe the interactive feature between graphs in the instructions so that users know how to interact with the graphs.
 
 - Change the initial state for the rating and profit plots so that not all directors show.
 
-- Change the bar chart title when there are fewer than 30 directors in a selected genre.
+- Change the number on bar chart title when there are fewer than 30 directors in a selected genre.
 
 - Make the points in the line charts bigger.
 
+- Remove the scroll from the line charts since it doesn't add additional information.
 
-After reviewing the feedback, we find out that users can explore the functions of our app with the help of app instruction. Overall, they can use the app in an expected way. However, most of them point out that the app instruction would be more obvious and concise so that they can use the important interactive features more easily. Another common feedback is that changing the initial profit and rating plots and having a default selected director so that not all the directors show.
+- Put a cap on the number of directors that can be selected to not overplot the line charts.
 
-Based on the feedback, we think it is appropriate to adjust the app layout and the instruction text to make it more obvious and clear. It is also useful to add a description of the relationship between filtering in the bar chart and the effects on the line charts. Besides, we could modify the code to make the bar chart title show the actual number of directors in the bar chart. However, we think it is unnecessary to make points in line charts bigger since it doesn't make charts more effective. Another thing we are unable to implement is having a default selected director in the initial. We have tried that and contacted Jake last week, but it seems impossible to manage this feature in Dash.
+- Make the title of the bar chart two lines because if you select a long movie title it adds a scroll bar to the bottom.
 
-We consider all the feedback valuable and the suggestion on the function instruction is the most valuable. The interactive component of clicking the bar to show the related movie ratings and profits in the right plots is the most important feature, so we should make sure the users know how to do that. The first part of the feedback process, "fly-on-the-wall", was most valuable since it gave us a great opportunity to test the usability of our app. We can learn if the app reaches our expectation by observing our "users". The observation and feedback gave us invaluable suggestions on how to improve and polish our app and led to an improved app after our adjustment.
+After reviewing the feedback, we found that users can explore the functions of our app with the help of app's instructions. Overall, they can use the app in an expected way. However, most of them pointed out that the instructions could be more obvious and concise to be able to use the interactive features more easily. Another common feedback comment is to change the initial profit and rating plots and having a default selected director so that not all the directors show. We agree with this comment, but could not implement it in the timeframe. We included this weakness in our weakness section above. 
+
+Based on the feedback, we think it is appropriate to adjust the app layout and the text for the instructions to make it more obvious and clear. It is also useful to add a description of the relationship between filtering in the bar chart and the effects on the line charts. We also modify the code to make the bar chart title show the actual number of directors in the bar chart. However, we think it is unnecessary to make points in line charts bigger since it doesn't make charts more effective. Another thing we were unable to implement is having a default selected director in the initial loading of the dashboard. We agree that is is an important feature to address, but we contacted Jake last week and it seems impossible to manage this feature in Dash.
+
+We compiled all the feedback and broke them down into priorities for our implementation this week. We found the suggestion on the updating and clarifying functionality instructions was the most valuable. The interactive component of clicking the bar to show the related movie ratings and profits in the right plots is the most important feature, so we should make sure the users know how to do that. The first part of the feedback process, "fly-on-the-wall", was most valuable since it gave us a great opportunity to test the usability of our app. We can learn if the app reaches our expectation by observing our "users". The observation and feedback gave us invaluable suggestions on how to improve and polish our app and led to an improved app after our adjustment.
 
 #### Changes and Maintenance Strategy 
 
-We decide to make the following changes:
+We decided to make the following changes:
 
-- The first two suggestions say that our app instruction does not stand out and is not effective enough. Those suggestions are very helpful. So we decided to change the instruction layout and add descriptions to clarify the relationship between graphs and instruct on how to filter multiple directors.
+- The first two suggestions say that the instructions on our app do not stand out and are not effective enough. Those suggestions are very helpful to understand users’ perspectives on our app. We took the feedback and decided to change the instructions layout and add descriptions to clarify the relationship between graphs and instruct on how to filter multiple directors. We used bold to make the important multi-selection interactivity stand out. 
 
-- The suggestion about the bar chart title is reasonable, so we decided to change the bar chart title according to the number of directors shown in the chart.  
+- We would like to pre-select directors, but according to [Jake Vanderplas from Altair](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/issues/49), the pre-selection feature has not been implemented in  Dash. So we are able to change the initial state for now.
 
-Details about those changes are in this [issue](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/issues/69).
+- The suggestion on changing the title for the number of directors was reasonable, so we decided to change the title according to the number of directors shown in the chart. 
+
+- We removed the zooming in and out of the line charts and set the y-axis to start at zero. 
+
+- We looked into making the title of the bar chart two lines since a scroll bar appears when you select Thriller/Suspense as a genre. We researched this feature, but it seems to still be an [issue in Vega-lite](https://github.com/altair-viz/altair/issues/262) with no update on how to do it. 
+
+- We looked into selecting a maximum amount of directors, but it was not implemented due to the low priority and short timeframe for the complexity of the problem. This would also require more instructions on the app as this would be something that would confuse users if they were unable to select additional directors.  It would be a future improvement for the dashboard and would tie in to pre-selecting directors as it would be a condition upon loading. 
+
+Details about all feedback and priority list are in this [issue](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/issues/69).
+

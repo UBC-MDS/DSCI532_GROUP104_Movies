@@ -144,8 +144,7 @@ def make_plot(movie_df, genre='Action'):
         alt.X("Year:O",
               axis=alt.Axis(title="Year")),
         alt.Y("IMDB_Rating:Q",
-              axis=alt.Axis(title="IMDB Rating (1-10)"),
-              scale=alt.Scale(zero=False)),
+              axis=alt.Axis(title="IMDB Rating (1-10)")),
         alt.Color('Director:N'),
         opacity=alt.condition(brush, alt.value(0.75), alt.value(0.01)),
         tooltip=['Title', 'Major_Genre', 'Director', 'IMDB_Rating']
@@ -153,7 +152,7 @@ def make_plot(movie_df, genre='Action'):
         title='IMDB Rating',
         width=400,
         height=280
-    ).interactive().transform_filter(brush)
+    ).transform_filter(brush)
 
     # plot a line chart of movie profits in the selected genre of 
     # these 30 directors across the years
@@ -170,6 +169,6 @@ def make_plot(movie_df, genre='Action'):
         title='Worldwide Profit',
         width=400,
         height=280
-    ).interactive().transform_filter(brush)
+    ).transform_filter(brush)
 
     return chart_1 | (chart_2 & chart_3)
