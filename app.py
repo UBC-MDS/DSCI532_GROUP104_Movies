@@ -36,7 +36,7 @@ jumbotron = dbc.Jumbotron([
                          'line-height': '20px'
                      }),
                 html.P(
-                    "This app is for you to explore different directors based on the number of movies they produce in a genre to find your director for your next movie.",
+                    "Explore different directors based on the number of movies they produce in a genre to find your director for your next movie.",
                     style={
                         'textAlign': 'Left',
                         'color': '#0f3c63',
@@ -71,6 +71,18 @@ jumbotron = dbc.Jumbotron([
 
 content1 = dbc.Container([
     html.Div(
+        dcc.Markdown('**Instructions**'),
+        style={
+            'height': '30px',
+            'width': '100%',
+            'float': 'left',
+            'margin-left': '30px',
+            'margin-right': '10px',
+            'color': '#0f3c63',
+            'font-family': 'sans-serif',
+        }
+    ),
+    html.Div(
         html.P('Select a genre'),
         style={
             'height': '30px',
@@ -93,30 +105,30 @@ content1 = dbc.Container([
         ),
         style={
             'height': '30px',
-            'width': '160px',
+            'width': '200px',
             'float': 'left',
         }
     ),
     html.Div(
-        html.P(
-            'and click on the bar chart to choose a director to explore. Press "shift" for multiple selections.'),
+        dcc.Markdown('**Hold "shift" and click on one or more bars** on the bar chart to choose directors to view movie ratings and profits.'),
         style={
             'height': '30px',
             'float': 'left',
-            'width': 'fit-content',
+            'width': '100%',
             'margin-left': '30px',
             'color': '#0f3c63',
             'font-family': 'sans-serif',
             # 'border': '1px solid blue'
         }
     ),
+
     html.Div(
         html.P(
-            'Hover over a point in the "IMDB Rating" and "Worldwide Profit" plots to see the attributes of the movie.'),
+            'Hover over a point for more details.'),
         style={
-            'height': '30px',
+            'height': '50px',
             'float': 'left',
-            'width': 'fit-content',
+            'width': '100%',
             'margin-left': '30px',
             'color': '#0f3c63',
             'font-family': 'sans-serif',
