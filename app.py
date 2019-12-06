@@ -14,14 +14,20 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 app.title = 'Dash app with pure Altair HTML'
 
-
+# Load data 
 movie_df = pd.read_csv('data/clean/movies_clean_df.csv', index_col=0)
+
+# Get genre list
 genres = movie_df.Major_Genre.unique()
+
+# Get director list
 directors = movie_df.Director.unique()
 
+# Set up the app header
 jumbotron = dbc.Jumbotron([
     dbc.Container([
         html.Div(
+            # Set up the app title
             [html.H1("Welcome to the Directors Production Tracker App",
                      style={
                          'textAlign': 'Left',
@@ -35,6 +41,7 @@ jumbotron = dbc.Jumbotron([
                          'font-size': '25px',
                          'line-height': '20px'
                      }),
+                # Set up the app introduction
                 html.P(
                     "Explore different directors based on the number of movies they produce in a genre to find your director for your next movie.",
                     style={
@@ -50,6 +57,7 @@ jumbotron = dbc.Jumbotron([
                         'line-height': '30px'
                     }
             )],
+            # Set up the header format
             style={
                 'background-color': '#f2f8fd',
                 'margin-top': '0px',
@@ -69,8 +77,10 @@ jumbotron = dbc.Jumbotron([
     fluid=True,
 )
 
+# Set up the function instrution
 content1 = dbc.Container([
     html.Div(
+        # Set up the title for instruction 
         dcc.Markdown('**Instructions**'),
         style={
             'height': '30px',
@@ -82,6 +92,7 @@ content1 = dbc.Container([
             'font-family': 'sans-serif',
         }
     ),
+    # Set up the instruction for dropdown 
     html.Div(
         html.P('Select a genre'),
         style={
@@ -94,6 +105,7 @@ content1 = dbc.Container([
             'font-family': 'sans-serif',
         }
     ),
+    # Add the dropdown for genres
     html.Div(
         dcc.Dropdown(
             id='genre',
@@ -109,6 +121,7 @@ content1 = dbc.Container([
             'float': 'left',
         }
     ),
+    # Add the instruction for interactive functions
     html.Div(
         dcc.Markdown('**Hold "shift" and click on one or more bars** on the bar chart to choose directors to view movie ratings and profits.'),
         style={
@@ -121,7 +134,7 @@ content1 = dbc.Container([
             # 'border': '1px solid blue'
         }
     ),
-
+    # Add description of tooltips in line charts
     html.Div(
         html.P(
             'Hover over a point for more details.'),
@@ -138,7 +151,7 @@ content1 = dbc.Container([
 
 ])
 
-
+# Set up the plots
 content = dbc.Container([
     html.Div(
         html.Iframe(
@@ -162,6 +175,7 @@ content = dbc.Container([
     )
 ])
 
+# Set up the footer
 footer = dbc.Container(
     html.Div(
         html.P(
@@ -179,6 +193,7 @@ footer = dbc.Container(
     )
 )
 
+# Set up the app layout
 app.layout = html.Div([jumbotron,
                        content1,
                        content,
