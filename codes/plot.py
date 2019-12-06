@@ -120,7 +120,6 @@ def make_plot(movie_df, genre='Action'):
 
     # get information from the 30 most productive directors in the selected genre
     top_director, top_df = get_top_df(genre)
-
     brush = alt.selection(type='multi', fields=['Director'], init={
                           'Director': top_director.iloc[0, 0]})
 
@@ -134,7 +133,7 @@ def make_plot(movie_df, genre='Action'):
               title='Number of movies'),
         opacity=alt.condition(brush, alt.value(0.75), alt.value(0.05)),
     ).properties(
-        title='Top 30 most productive directors in ' + genre,
+        title='Top ' + str(min(30, top_director.shape[0])) + ' most productive directors in ' + genre,
         width=200,
         height=650
     ).add_selection(brush)
