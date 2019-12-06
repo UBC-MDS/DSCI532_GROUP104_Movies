@@ -42,7 +42,7 @@ We decided to make the following changes:
 
 - The first two suggestions say that the instructions on our app do not stand out and are not effective enough. Those suggestions are very helpful to understand users' perspectives on our app. We took the feedback and decided to change the instructions layout and add descriptions to clarify the relationship between graphs and instruct on how to filter multiple directors. We used bold to make the important multi-selection interactivity stand out. 
 
-- We would like to pre-select directors, but according to [Jake Vanderplas from Altair](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/issues/49), the pre-selection feature has not been implemented in  Dash. So we are not able to change the initial state for now.
+- We would like to pre-select directors, but according to [Jake Vanderplas from Altair](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/issues/49), the pre-selection feature has not been implemented in Dash. So we are not able to change the initial state for now.
 
 - The suggestion on changing the title for the number of directors was reasonable, so we decided to change the title according to the number of directors shown in the chart. 
 
