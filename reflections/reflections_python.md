@@ -35,10 +35,8 @@ We consider all the feedback valuable and the suggestion on the function instruc
 
 We decide to make the following changes:
 
-- The first two suggestions say that our app instruction does not stand out and is not effective enough. Those suggestions are very helpful. And we decided to change the instruction layout and add descriptions to clarify the relationship between graphs and instruct on how to filter multiple directors.
+- The first two suggestions say that our app instruction does not stand out and is not effective enough. Those suggestions are very helpful. So we decided to change the instruction layout and add descriptions to clarify the relationship between graphs and instruct on how to filter multiple directors.
 
-- We would like to pre-select directors. But according to [Jake Vanderplas from Altair](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/issues/49), the pre-selection feature has not been implemented in the dashboard. So we are able to change the initial state for now.
-
-- The last suggestion is reasonable, so we decided to change the bar chart title according to the number of directors shown in the chart.  
+- The suggestion about the bar chart title is reasonable, so we decided to change the bar chart title according to the number of directors shown in the chart.  
 
 Details about those changes are in this [issue](https://github.com/UBC-MDS/DSCI532_GROUP104_Movies/issues/69).
