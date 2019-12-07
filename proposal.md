@@ -17,8 +17,8 @@ The other two variables describe the outcomes of the movie through ratings (`IMD
 Research Question:
 
 1. Who are the top 30 productive directors for a given genre?
-2. What are the profits of the movies for a specific director for a given timespan?
-3. What are the ratings of the movies for a specific director for a given timespan?
+2. What are the profits of the movies for a specific director?
+3. What are the ratings of the movies for a specific director?
 
 Usage Scenario:
 
